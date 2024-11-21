@@ -9,12 +9,9 @@ public class LoanCalc {
     // interest rate (double, as a percentage), and number of payments (int).  
 	public static void main(String[] args) {		
 		// Gets the loan data
-	//	double loan = Double.parseDouble(args[0]);
-	//	double rate = Double.parseDouble(args[1]);
-	//	int n = Integer.parseInt(args[2]);
-	double loan = 100000;
-	double rate = 3;
-	int n = 12;
+		double loan = Double.parseDouble(args[0]);
+		double rate = Double.parseDouble(args[1]);
+		int n = Integer.parseInt(args[2]);
 
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
@@ -62,14 +59,14 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         iterationCounter = 0;
-		double low = 1, high = loan / n * (1 + rate / 100);
-		double g = (low + high) / 2;
+		double low = 1, high = loan / n * (1 + (rate));
+		double g = (low + high) / 2.0;
 
-		while(Math.abs(endBalance(loan, rate, n, g)) > epsilon) {
+		while(Math.abs(endBalance(loan, rate, n, g)) >= epsilon) {
 			if (endBalance(loan, rate, n, g) > 0) {
-				high = g;
-			} else {
 				low = g;
+			} else {
+				high = g;
 			}
 			g = (low + high) / 2;
 			iterationCounter++;
