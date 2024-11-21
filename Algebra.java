@@ -110,13 +110,15 @@ public class Algebra {
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		if (x1 < x2) return x1;
-        int result = minus(x1, times(div(x1, x2), x2));
-		return result;
-	}	
+		int quotient = div(x1, x2);
+		int product = times(quotient, x2);
+		return minus(x1, product);
+	}
+	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
+		if (x < 0) return 0;
 		if (x == 1) return 1;
         int num = 1;
 		for (int i = 0; i < div(x, 2); i++) {
