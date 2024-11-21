@@ -19,7 +19,7 @@ public class LoanCalc {
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
 		// Computes the ending balance of the loan, given a periodical payment
-		double payment = 12333;
+		double payment = 10000;
 		double endBalance = endBalance(loan, rate, n, payment);
 		System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int) endBalance);
 		
@@ -50,14 +50,8 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
-    	iterationCounter = 0;
-		double g = loan / n; 
-		while(endBalance(loan, rate, n, g) >= epsilon) {
-			g += epsilon;
-			iterationCounter++;
-		}
-		
-		return g;
+    	// Replace the following statement with your code
+		return 0;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
