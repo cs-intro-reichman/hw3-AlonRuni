@@ -9,9 +9,12 @@ public class LoanCalc {
     // interest rate (double, as a percentage), and number of payments (int).  
 	public static void main(String[] args) {		
 		// Gets the loan data
-		double loan = Double.parseDouble(args[0]);
-		double rate = Double.parseDouble(args[1]);
-		int n = Integer.parseInt(args[2]);
+	//	double loan = Double.parseDouble(args[0]);
+	//	double rate = Double.parseDouble(args[1]);
+	//	int n = Integer.parseInt(args[2]);
+	double loan = 100000;
+	double rate = 3;
+	int n = 12;
 
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
@@ -62,11 +65,11 @@ public class LoanCalc {
 		double low = 1, high = loan / n * (1 + rate / 100);
 		double g = (low + high) / 2;
 
-		while((high - low) > epsilon) {
+		while(Math.abs(endBalance(loan, rate, n, g)) > epsilon) {
 			if (endBalance(loan, rate, n, g) > 0) {
-				low = g;
-			} else {
 				high = g;
+			} else {
+				low = g;
 			}
 			g = (low + high) / 2;
 			iterationCounter++;

@@ -13,15 +13,16 @@ public class Algebra {
 	//	System.out.println(minus(2,7));  // 2 - 7
 	//	System.out.println(minus(7,-2));  // 7 - (-2)
 	//	System.out.println(minus(-2,-7));  // (-2) - (-7)
-	//	System.out.println(times(3,0));  // 3 * 4
+	//	System.out.println(times(-1,-1));  // -1 * (-1)
 	//	System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
-		System.out.println(pow(-5,2));      // 5^3
+	//	System.out.println(pow(5,3));      // 5^3
 	//	System.out.println(pow(3,5));      // 3^5
-	//	System.out.println(div(12,3));   // 12 / 3    
-	//	System.out.println(div(5,5));    // 5 / 5  
-   	//	System.out.println(div(25,7));   // 25 / 7
+	//	System.out.println(div(-12,3));   // 12 / 3    
+	//	System.out.println(div(5,-5));    // 5 / 5  
+   	//	System.out.println(div(10,2));   // 10 / 2
    	//	System.out.println(mod(25,7));   // 25 % 7
    	//	System.out.println(mod(120,6));  // 120 % 6    
+		System.out.println(sqrt(-1));
    	//	System.out.println(sqrt(36));
 	//	System.out.println(sqrt(263169));
    	//	System.out.println(sqrt(76123));
@@ -91,12 +92,18 @@ public class Algebra {
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
         int countSteps = 0;
-		int model = x2;
-		if (x2 > x1) return 0;
-		while (model <= x1) {
-			model = plus(model, x2);
+		int x1Ver = x1;
+		int x2Ver = x2;
+		
+
+		if (x1 < 0) x1Ver = times(x1, -1);
+		if (x2 < 0) x2Ver = times(x2, -1);
+		
+		while (x2Ver <= x1Ver) {
+			x2Ver = plus(x2Ver, x2Ver);
 			countSteps++;
 		}
+		if ((x1 > 0) && (x2 < 0) || (x1 < 0) && (x2 > 0)) return times(countSteps, -1);
 		return countSteps;
 	}
 
@@ -109,6 +116,7 @@ public class Algebra {
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
+		if (x == 1) return 1;
         int num = 1;
 		for (int i = 0; i < div(x, 2); i++) {
 			if (times(num, num) > x) {
