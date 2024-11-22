@@ -28,22 +28,68 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
-		return false;
+		String strA = preProcess(str1);
+		String strB = preProcess(str2);
+	
+		if (strA.length() != strB.length()) return false;
+		
+		for (int i = 0; i < strA.length(); i++) {
+			int countA = 0;
+			int countB = 0;
+			for (int j = 0; j < strA.length(); j++) {
+				if (strA.charAt(i) == strA.charAt(j)) {
+					countA++;
+				}
+			}
+			for (int j = 0; j < strB.length(); j++) {
+				if (strA.charAt(i) == strB.charAt(j)) {
+					countB++;
+				}
+			}
+
+			if (countA != countB) {
+				return false;
+			}
+
+		}
+		
+		return true;
 	}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+		String result = "";
+		str = str.toLowerCase();
+		String letters = "abcdefghijklmnopqrstuvwxyz";
+		for (int i = 0; i < str.length(); i++) {
+			if (letters.indexOf(str.charAt(i)) != -1) {
+				result = result + str.charAt(i);
+			}
+		}
+		
+		return result;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+		String newStr = "";
+		String randomString = "";
+		int timesLeft = str.length();
+		
+		for (int i = 0; i < timesLeft; i++) {
+			int randomNum = (int) (Math.random() * str.length());
+			randomString = randomString + str.charAt(randomNum);
+
+			for (int j = 0; j < str.length(); j++) {
+				if (str.charAt(j) == str.charAt(randomNum)) continue;
+				newStr = newStr + str.charAt(j);
+			}
+			str = newStr;
+		}
+
+		return randomString;
 	}
 }
