@@ -31,7 +31,7 @@ public class LoanCalc {
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 	double balance = loan;
 	for (int i = 0; i < n; i++) {
-		balance = (balance * (1 + rate / 100)) - payment;
+		balance = (balance - payment) * (1 + rate / 100);
 	}
 		return balance;
 	}
@@ -59,7 +59,7 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         iterationCounter = 0;
-		double low = 1, high = loan;
+		double low = loan / n, high = loan;
 		double g = (low + high) / 2.0;
 
 		while(high - low > epsilon) {
