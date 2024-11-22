@@ -52,6 +52,13 @@ public class Anagram {
 				return false;
 			}
 
+			for (int j = 0; j < strB.length(); j++) {
+                if (strB.charAt(j) == strA.charAt(i)) {
+                    strB = strB.substring(0, j) + ' ' + strB.substring(j + 1);
+                    break; 
+                }
+            }
+
 		}
 		
 		return true;
@@ -76,19 +83,15 @@ public class Anagram {
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		String newStr = "";
 		String randomString = "";
 		int limit = str.length();
+		String remaining = str;
 		
 		for (int i = 0; i < limit; i++) {
-			int randomNum = (int) (Math.random() * str.length());
-			randomString = randomString + str.charAt(randomNum);
-
-			for (int j = 0; j < str.length(); j++) {
-				if (str.charAt(j) == str.charAt(randomNum)) continue;
-				newStr = newStr + str.charAt(j);
-			}
-			str = newStr;
+			int randomNum = (int) (Math.random() * remaining.length());
+			randomString += remaining.charAt(randomNum);
+			remaining = remaining.substring(0, randomNum) +
+						remaining.substring(randomNum + 1);
 		}
 
 		return randomString;
