@@ -77,9 +77,9 @@ public class Anagram {
 	public static String randomAnagram(String str) {
 		String newStr = "";
 		String randomString = "";
-		int timesLeft = str.length();
+		int limit = str.length();
 		
-		for (int i = 0; i < timesLeft; i++) {
+		for (int i = 0; i < limit; i++) {
 			int randomNum = (int) (Math.random() * str.length());
 			randomString = randomString + str.charAt(randomNum);
 

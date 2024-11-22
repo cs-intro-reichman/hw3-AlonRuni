@@ -9,9 +9,13 @@ public class LoanCalc {
     // interest rate (double, as a percentage), and number of payments (int).  
 	public static void main(String[] args) {		
 		// Gets the loan data
-		double loan = Double.parseDouble(args[0]);
-		double rate = Double.parseDouble(args[1]);
-		int n = Integer.parseInt(args[2]);
+		//double loan = Double.parseDouble(args[0]);
+		//double rate = Double.parseDouble(args[1]);
+		//int n = Integer.parseInt(args[2]);
+
+		double loan = 100000;
+		double rate = 50;
+		int n = 1;
 
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
@@ -44,7 +48,7 @@ public class LoanCalc {
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
     	iterationCounter = 0;
 		double g = loan / n; 
-		while(endBalance(loan, rate, n, g) > epsilon) {
+		while(endBalance(loan, rate, n, g) > 0) {
 			g += epsilon;
 			iterationCounter++;
 		}
@@ -63,7 +67,7 @@ public class LoanCalc {
 		double g = (low + high) / 2.0;
 
 		while(high - low > epsilon) {
-			if (endBalance(loan, rate, n, g) > 0) {
+			if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, low) > 0) {
 				low = g;
 			} else {
 				high = g;
