@@ -6,6 +6,7 @@ public class Anagram {
 		System.out.println(isAnagram("William Shakespeare","I am a weakish speller")); // true
 		System.out.println(isAnagram("Madam Curie","Radium came")); // true
 		System.out.println(isAnagram("Tom Marvolo Riddle","I am Lord Voldemort")); // true
+		System.out.println(isAnagram("Hello World!","hello world")); // true
 
 		// Tests the preProcess function.
 		System.out.println(preProcess("What? No way!!!"));
