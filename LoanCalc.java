@@ -13,6 +13,12 @@ public class LoanCalc {
 		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
 
+	//	double loan = 100000;
+	//	double rate = 3;
+	//	int n = 10;
+	//	double payment = 10000;
+	//	System.out.println(endBalance(loan, rate, n, payment));
+
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 		
 		// Computes the periodical payment using brute force search
@@ -26,11 +32,7 @@ public class LoanCalc {
 		System.out.println("number of iterations: " + iterationCounter);
 
 
-		//	double loan = 100000;
-		//	double rate = 3;
-		//	int n = 10;
-		//	double payment = 10000;
-		//	System.out.println(endBalance(loan, rate, n, payment));
+		
 
 	}
 
@@ -51,7 +53,7 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
     	iterationCounter = 0;
-		double g = loan / n + epsilon; 
+		double g = loan / n; 
 		while(endBalance(loan, rate, n, g) > 0) {
 			g += epsilon;
 			iterationCounter++;
