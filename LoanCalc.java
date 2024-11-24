@@ -41,7 +41,7 @@ public class LoanCalc {
 	for (int i = 0; i < n; i++) {
 		balance = (balance - payment) * (1 + (rate / 100));
 	}
-		return Math.round(balance);
+		return balance;
 	}
 	
 	// Uses sequential search to compute an approximation of the periodical payment
@@ -51,7 +51,7 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
     	iterationCounter = 0;
-		double g = loan / n; 
+		double g = loan / n + epsilon; 
 		while(endBalance(loan, rate, n, g) > 0) {
 			g += epsilon;
 			iterationCounter++;
