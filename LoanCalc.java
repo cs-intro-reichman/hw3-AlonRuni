@@ -9,21 +9,29 @@ public class LoanCalc {
     // interest rate (double, as a percentage), and number of payments (int).  
 	public static void main(String[] args) {		
 		// Gets the loan data
-		double loan = Double.parseDouble(args[0]);
-		double rate = Double.parseDouble(args[1]);
-		int n = Integer.parseInt(args[2]);
+//		double loan = Double.parseDouble(args[0]);
+//		double rate = Double.parseDouble(args[1]);
+//		int n = Integer.parseInt(args[2]);
+//
+//		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
+//		
+//		// Computes the periodical payment using brute force search
+//		System.out.print("\nPeriodical payment, using brute force: ");
+//		System.out.println((int) bruteForceSolver(loan, rate, n, epsilon));
+//		System.out.println("number of iterations: " + iterationCounter);
+//
+//		// Computes the periodical payment using bisection search
+//		System.out.print("\nPeriodical payment, using bi-section search: ");
+//		System.out.println((int) bisectionSolver(loan, rate, n, epsilon));
+//		System.out.println("number of iterations: " + iterationCounter);
 
-		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
-		
-		// Computes the periodical payment using brute force search
-		System.out.print("\nPeriodical payment, using brute force: ");
-		System.out.println((int) bruteForceSolver(loan, rate, n, epsilon));
-		System.out.println("number of iterations: " + iterationCounter);
 
-		// Computes the periodical payment using bisection search
-		System.out.print("\nPeriodical payment, using bi-section search: ");
-		System.out.println((int) bisectionSolver(loan, rate, n, epsilon));
-		System.out.println("number of iterations: " + iterationCounter);
+double loan = 100000;
+	double rate = 3;
+	int n = 10;
+	double payment = 10000;
+	System.out.println(endBalance(loan, rate, n, payment));
+
 	}
 
 	// Computes the ending balance of a loan, given the loan amount, the periodical
@@ -31,9 +39,9 @@ public class LoanCalc {
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 	double balance = loan;
 	for (int i = 0; i < n; i++) {
-		balance = (balance - payment) * (1 + rate / 100);
+		balance = (balance - payment) * (1 + (rate / 100));
 	}
-		return balance;
+		return Math.round(balance);
 	}
 	
 	// Uses sequential search to compute an approximation of the periodical payment
