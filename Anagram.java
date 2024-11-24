@@ -52,13 +52,6 @@ public class Anagram {
 				return false;
 			}
 
-			for (int j = 0; j < strB.length(); j++) {
-                if (strB.charAt(j) == strA.charAt(i)) {
-                    strB = strB.substring(0, j) + ' ' + strB.substring(j + 1);
-                    break; 
-                }
-            }
-
 		}
 		
 		return true;

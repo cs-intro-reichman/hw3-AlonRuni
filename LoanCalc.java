@@ -13,6 +13,7 @@ public class LoanCalc {
 		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
 
+		// Testing material:
 	//	double loan = 100000;
 	//	double rate = 3;
 	//	int n = 10;
