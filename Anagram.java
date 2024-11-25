@@ -63,11 +63,8 @@ public class Anagram {
 	public static String preProcess(String str) {
 		String result = "";
 		str = str.toLowerCase();
-		String letters = "abcdefghijklmnopqrstuvwxyz";
+		String letters = "abcdefghijklmnopqrstuvwxyz ";
 		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) == ' ') {
-				continue;
-			}
 			if (letters.indexOf(str.charAt(i)) != -1) {
 				result = result + str.charAt(i);
 			}
