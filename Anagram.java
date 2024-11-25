@@ -65,6 +65,9 @@ public class Anagram {
 		str = str.toLowerCase();
 		String letters = "abcdefghijklmnopqrstuvwxyz";
 		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ' ') {
+				continue;
+			}
 			if (letters.indexOf(str.charAt(i)) != -1) {
 				result = result + str.charAt(i);
 			}
