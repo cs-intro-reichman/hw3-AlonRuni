@@ -29,8 +29,8 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		String strA = preProcess(str1);
-		String strB = preProcess(str2);
+		String strA = removeSpaces(preProcess(str1));
+		String strB = removeSpaces(preProcess(str2));
 	
 		if (strA.length() != strB.length()) return false;
 		
@@ -88,5 +88,18 @@ public class Anagram {
 		}
 
 		return randomString;
+	}
+
+	// Function to remove spaces
+	// this Function recive String in lower case and return String with no spaces
+	public static String removeSpaces(String str) {
+		String result = "";
+		String letters = "abcdefghijklmnopqrstuvwxyz";
+		for (int i = 0; i < str.length(); i++) {
+			if (letters.indexOf(str.charAt(i)) != -1) {
+				result = result + str.charAt(i);
+			}
+		}
+		return result;
 	}
 }
